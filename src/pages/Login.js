@@ -1,34 +1,40 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { loginEmail } from '../redux/actions/index';
 
 class Login extends React.Component {
+  state = {
+    email: '',
+    senha: '',
+  };
+
+  validButton = () => {
+    const { email, senha } = this.state;
+    const REGEX = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+    const validReg = REGEX.test(email);
+    const minDigit = 5;
+    const validEnter = senha.length > minDigit && validReg;
+
+    return !validEnter;
+  };
+
+  handleChange = (event) => {
+    const { target } = event;
+    const { name, value } = target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleClick = () => {
+    const { history, dispatchUser } = this.props;
+    const { email } = this.state;
+    dispatchUser(email);
+    history.push('/carteira');
+  };
+
   render() {
-    state = {
-      email: '',
-      senha: '',
-    };
-    validButton = () => {
-      const { email, senha } = this.state;
-      const REGEX = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
-      const validReg = REGEX.test(email);
-      const minDigit = 5;
-      const validEnter = senha.length > minDigit && validReg;
-
-      return !validEnter;
-    };
-
-    handleChange = (event) => {
-      const { target } = event;
-      const { name, value } = target;
-      this.setState({
-        [name]: value,
-      });
-      handleClick = () => {
-        const { history, dispatchUser } = this.props;
-        const { email } = this.state;
-        dispatchUser(email);
-        history.push('/carteira');
-      };
-    };
     const { email, senha } = this.state;
     return (
       <div>
@@ -48,22 +54,24 @@ class Login extends React.Component {
           data-testid="password-input"
           onChange={ this.handleChange }
         />
-        <label htmlFor="entrar">
+
+        <button
+          type="button"
+          id="entrar"
+          name="entrar"
+          onClick={ this.handleClick }
+          disabled={ this.validButton() }
+        >
           Entrar
-          <input
-            type="button"
-            id="entrar"
-            name="entrar"
-            onClick={ this.handleClick }
-          />
-        </label>
+        </button>
+
       </div>
     );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  dispatchUser: (state) => dispatch(loginAction(state)),
+  dispatchUser: (state) => dispatch(loginEmail(state)),
 });
 
 Login.propTypes = {
