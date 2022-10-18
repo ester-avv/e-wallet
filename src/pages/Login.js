@@ -11,9 +11,9 @@ class Login extends React.Component {
       const REGEX = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
       const validReg = REGEX.test(email);
       const minDigit = 5;
-      const validEntrance = senha.length > minDigit && validReg;
+      const validEnter = senha.length > minDigit && validReg;
 
-      return !validEntrance;
+      return !validEnter;
     };
 
     handleChange = (event) => {
