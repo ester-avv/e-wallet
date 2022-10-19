@@ -4,10 +4,10 @@ export const TOTAL_EXPENSES = 'TOTAL_EXPENSES';
 
 export const loginEmail = (login) => ({
   type: LOGIN_EMAIL,
-  payload: login,
+  email: login,
 });
 
 export const changeExpenses = (myExpenses) => ({
   type: TOTAL_EXPENSES,
-  payload: myExpenses,
+  totalExpenses: myExpenses,
 });
