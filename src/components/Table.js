@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 
 class Table extends Component {
   render() {
-    /* const { expenses } = this.props; */
+    const { expenses } = this.props;
     return (
       <div>
         <table border="1">
@@ -21,6 +21,28 @@ class Table extends Component {
               <th>Editar/Excluir</th>
             </tr>
           </thead>
+          { expenses.map((e) => {
+            const valueTotal = Number(e.value).toFixed(2);
+            const convertedValue = Number(e.exchangeRates[e.currency].ask);
+            const fixedConvValue = convertedValue;
+
+            const convertedReal = convertedValue * e.value;
+
+            return (
+              <tbody key={ e.id }>
+                <tr>
+                  <td>{ e.description }</td>
+                  <td>{ e.tag }</td>
+                  <td>{ e.method }</td>
+                  <td>{ valueTotal }</td>
+                  <td>{ e.exchangeRates[e.currency].name }</td>
+                  <td>{ fixedConvValue.toFixed(2) }</td>
+                  <td>{ convertedReal.toFixed(2) }</td>
+                  <td>Real</td>
+                </tr>
+              </tbody>
+            );
+          })}
         </table>
       </div>
     );
