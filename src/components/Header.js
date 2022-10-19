@@ -7,7 +7,7 @@ class Header extends Component {
   handleTotalExpenses = () => {
     const { totalExpenses } = this.props;
     const total = totalExpenses.reduce((initial, actual) => initial + actual, 0);
-    const numberOfDecimals = 3;
+    const numberOfDecimals = 2;
     /*     const sumExpenses = {
       type: TOTAL_EXPENSES,
       totalExpenses: total,
@@ -37,7 +37,7 @@ class Header extends Component {
 }
 const mapStateToProps = (state) => ({
   email: state.user.email,
-  totalExpenses: state.wallet.totalExpenses,
+  totalExpenses: state.wallet.expenses,
 });
 
 Header.propTypes = {
