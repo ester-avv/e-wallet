@@ -19,6 +19,8 @@ class WalletForm extends Component {
     dispatch(fetchAPI());
   }
 
+  // Requisito 4 feito com ajuda de João Matheus, Anderson e Carol Lima
+
   handleChange = ({ target }) => {
     const { name, value, type } = target;
 
