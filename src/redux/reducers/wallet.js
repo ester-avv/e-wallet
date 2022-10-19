@@ -1,5 +1,5 @@
 // Esse reducer será responsável por tratar o todas as informações relacionadas as despesas
-import { CURRENCY, TOTAL_EXPENSES } from '../actions';
+import { COMPLETE_EXPENSES, CURRENCY, TOTAL_EXPENSES } from '../actions';
 
 const INITIAL_STATE = {
   expenses: [],
@@ -21,7 +21,11 @@ const wallet = (state = INITIAL_STATE, action) => {
       ...state,
       currencies: action.payload,
     };
-
+  case COMPLETE_EXPENSES:
+    return {
+      ...state,
+      expenses: [...state.expenses, action.expenses],
+    };
   default:
     return state;
   }

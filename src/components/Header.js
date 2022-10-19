@@ -6,14 +6,17 @@ import PropTypes from 'prop-types';
 class Header extends Component {
   handleTotalExpenses = () => {
     const { totalExpenses } = this.props;
-    const total = totalExpenses.reduce((initial, actual) => initial + actual, 0);
-    const numberOfDecimals = 2;
-    /*     const sumExpenses = {
-      type: TOTAL_EXPENSES,
-      totalExpenses: total,
-    };
-    dispatch(sumExpenses); */
-    return total.toFixed(numberOfDecimals);
+    const total = totalExpenses
+      .reduce((acc, a) => {
+        console.log(a.exchangeRates[a.currency].ask);
+        return acc + Number(a.value) * Number(a.exchangeRates[a.currency].ask);
+      }, 0);
+
+    const number = total.toFixed(2);
+    /* console.log('number', number);
+console.log('total', total); */
+
+    return number;
   };
 
   render() {
@@ -23,13 +26,13 @@ class Header extends Component {
     return (
       <div>
         <h3 data-testid="email-field">
-          {`Email: ${email}`}
+          {email}
         </h3>
         <h3 data-testid="total-field">
-          {`Total expenses: ${this.handleTotalExpenses()}`}
+          {this.handleTotalExpenses()}
         </h3>
         <h3 data-testid="header-currency-field">
-          {`Currency: ${currency}`}
+          {currency}
         </h3>
       </div>
     );
