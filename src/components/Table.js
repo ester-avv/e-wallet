@@ -64,13 +64,15 @@ class Table extends Component {
   }
 }
 
+Table.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+  expenses: PropTypes.shape({
+    map: PropTypes.func,
+  }).isRequired,
+};
+
 const mapStateToProps = (state) => ({
   expenses: state.wallet.expenses,
 });
-
-Table.propTypes = {
-  dispatch: PropTypes.func.isRequired,
-  expenses: PropTypes.arrayOf().isRequired, // deleteExpense: PropTypes.func.isRequired,
-};
 
 export default connect(mapStateToProps)(Table);
