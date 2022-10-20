@@ -51,7 +51,7 @@ describe('Verifica a página Login', () => {
     const email = screen.getByTestId(/email-input/i);
     const buttonEntrar = screen.getByRole('button');
 
-    const myEmail = 'esteranj@ester.com';
+    const myEmail = 'ester@ester.com';
 
     userEvent.type(senha, 'gravidade98');
     userEvent.type(email, myEmail);
@@ -59,7 +59,7 @@ describe('Verifica a página Login', () => {
 
     userEvent.click(buttonEntrar);
 
-    /* expect(store.getState().user.email).toBe('esteranj@ester.com'); */
+    /* expect(store.getState().user.email).toBe('ester@ester.com'); */
   });
 
   it('Verifica a rota que o botão leva', () => {
