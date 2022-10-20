@@ -101,8 +101,8 @@ describe('Verifica a página Wallet', () => {
     /* expect(header[1].innerHTML).not.toEqual('0.00'); */
   });
 
-  it('Verifica o WalletForm', () => {
-   /* const {store } =  */renderWithRouterAndRedux(<Wallet />, { initialState }, ['/carteira']);
+  it('Verifica o WalletForm', async () => {
+    /* const {store } =  */renderWithRouterAndRedux(<Wallet />, initialState);
     const button = screen.getAllByRole('button');
     const buttonAdiciona = button[0];
     const inputs = screen.getAllByRole('textbox');
@@ -125,9 +125,15 @@ describe('Verifica a página Wallet', () => {
     userEvent.selectOptions(currency, 'USD');
     userEvent.selectOptions(method, 'Dinheiro');
     userEvent.selectOptions(tag, 'Lazer');
+
+    expect(value).toHaveAttribute('value', '010');
+    expect(description).toHaveAttribute('value', 'livro');
+
     userEvent.click(buttonAdiciona);
 
-    /* expect(store.getState().wallet.description).toBe('livro') */
+    const deleteBtn = await screen.findByTestId('delete-btn');
+    userEvent.click(deleteBtn);
+    expect(deleteBtn).not.toBeInTheDocument();
   });
 
   /* it('Verifica se os campos de preenchimento são renderizados corretamente', () => {
