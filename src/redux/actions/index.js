@@ -3,6 +3,7 @@ export const LOGIN_EMAIL = 'LOGIN_EMAIL';
 export const TOTAL_EXPENSES = 'TOTAL_EXPENSES';
 export const CURRENCY = 'CURRENCY';
 export const COMPLETE_EXPENSES = 'COMPLETE_EXPENSES';
+export const DELETE_EXPENSE = 'DELETE_EXPENSE';
 
 export const loginEmail = (login) => ({
   type: LOGIN_EMAIL,
@@ -17,6 +18,11 @@ export const changeExpenses = (myExpenses) => ({
 export const completeExpenses = (expenses) => ({
   type: COMPLETE_EXPENSES,
   expenses,
+});
+
+export const deleteExpense = (payload) => ({
+  type: DELETE_EXPENSE,
+  payload,
 });
 
 // requisito feito com ajuda do João Matheus
