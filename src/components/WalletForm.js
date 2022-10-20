@@ -22,7 +22,7 @@ class WalletForm extends Component {
   // Requisito 4 feito com ajuda de João Matheus, Anderson e Carol Lima
 
   handleChange = ({ target }) => {
-    const { name, value, type } = target;
+    const { name, value } = target;
 
     this.setState({
       [name]: value,
