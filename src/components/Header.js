@@ -7,10 +7,8 @@ class Header extends Component {
   handleTotalExpenses = () => {
     const { totalExpenses } = this.props;
     const total = totalExpenses
-      .reduce((acc, a) => {
-        console.log(a.exchangeRates[a.currency].ask);
-        return acc + Number(a.value) * Number(a.exchangeRates[a.currency].ask);
-      }, 0);
+      .reduce((acc, a) => (
+        acc + Number(a.value) * Number(a.exchangeRates[a.currency].ask)), 0);
 
     const number = total.toFixed(2);
     /* console.log('number', number);

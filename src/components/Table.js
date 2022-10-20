@@ -49,7 +49,7 @@ class Table extends Component {
                     <button
                       type="button"
                       onClick={ () => this.deleteButton(e.id) }
-                      data-testid="delete-btn"
+                      data-testId="delete-btn"
                     >
                       Deletar
                     </button>

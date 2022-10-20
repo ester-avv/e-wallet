@@ -133,7 +133,7 @@ class WalletForm extends Component {
               Saúde
             </option>
           </select>
-          <button type="button" onClick={ this.handleClick }>
+          <button type="button" data-testId="add-expenses" onClick={ this.handleClick }>
             Adicionar despesa
           </button>
         </form>
