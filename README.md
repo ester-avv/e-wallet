@@ -4,4 +4,6 @@ Essa aplicação é uma carteira de controle de gastos com conversor de moedas, 
   - Visualizar uma tabelas com seus gastos;
   - Visualizar o total de gastos convertidos para uma moeda de escolha;
   
+ A aplicação foi desenvolvida com o uso de React Redux.
+  
   Este projeto foi baseado no projeto TrybeWallet da escola Trybe e contém configurações definidas pela escola.
